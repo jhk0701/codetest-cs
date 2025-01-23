@@ -10,13 +10,18 @@ namespace Test
     {
         static void Main(string[] args) 
         {
-            int bridge_length = 2;
-            int weight = 10;
-            int[] truck_weights = { 7, 4, 5, 6 };
+            // 				["next"]
 
-            TrucksCrossingBridge sol = new TrucksCrossingBridge();
-            int result = sol.CrossBridge(bridge_length, weight, ref truck_weights);
-            Console.WriteLine(result);
+            string video_len = "07:22";     //"10:55";     // "34:33";
+            string pos = "04:05";           // "00:05";           // "13:00";
+            string op_start = "00:15";      // "00:15";      // "00:55";
+            string op_end = "04:07";        // "06:55";        // "02:55";
+            string[] commands = {"next"}; // { "prev", "next", "next" }; // { "next", "prev"};
+
+            var player = new VideoPlayer();
+            string sec = player.Process(video_len, pos, op_start, op_end, commands);
+            Console.WriteLine(sec);
+
         }
 
 

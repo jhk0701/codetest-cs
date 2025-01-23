@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeTest
 {
-    class TrucksCrossingBridge
+    public class TrucksCrossingBridge
     {
         public int CrossBridge(int bridgeLength, int weight, ref int[] truckWeights) 
         {
@@ -54,5 +54,6 @@ namespace CodeTest
 
             return time;
         }
+    
     }
 }
