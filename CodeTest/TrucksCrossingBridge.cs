@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeTest
 {
-    internal class TrucksCrossingBridge
+    class TrucksCrossingBridge
     {
         public int CrossBridge(int bridgeLength, int weight, ref int[] truckWeights) 
         {
@@ -25,7 +25,8 @@ namespace CodeTest
                 time += 1;
 
                 // 지나가는 트럭 처리
-                for (int j = 0; j < crossing.Count; j++) 
+                int crossingCnt = crossing.Count;
+                for (int j = 0; j < crossingCnt; j++) 
                 {
                     int idx = crossing.Dequeue();
                     processed[idx]++;
@@ -42,7 +43,7 @@ namespace CodeTest
                 // 빈 자리에 무게 조건 확인해서 트럭 추가
                 if (ready.Count > 0 &&
                     crossing.Count < bridgeLength && 
-                    weightInBridge + truckWeights[ready.Peek()] < weight) 
+                    weightInBridge + truckWeights[ready.Peek()] <= weight) 
                 {
                     int idx = ready.Dequeue();
                     weightInBridge += truckWeights[idx];

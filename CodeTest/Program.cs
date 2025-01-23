@@ -122,7 +122,6 @@ namespace Test
             }
         }
 
-
         public void GetGCD()
         {
             int n = 4;
@@ -172,7 +171,7 @@ namespace Test
             Console.WriteLine("!@#$%^&*(\\\'\"<>?:;");
         }
 
-        public void Matrix()
+        public void GetArray2()
         {
             // 	[[],[]]
             int[,] arr1 = new int[2, 2] { { 1, 2 }, { 2, 3 } };
@@ -193,4 +192,6 @@ namespace Test
             }
         }
     }
+
+
 }
