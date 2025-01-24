@@ -27,7 +27,7 @@ namespace Test
 
             Result = sum / diffs.Length;
 
-            Search(Result, Simulate(Result));
+            Search(Result);
         }
 
         bool Simulate(int level) 
@@ -46,25 +46,29 @@ namespace Test
             return lim >= totalTime;
         }
 
-        void Search(int lv, bool isLeft)
+        void Search(int lv)
         {
-            Console.WriteLine($"Search Start");
+            // Console.WriteLine($"Search Start");
 
-            // 이분탐색 시도          
-            if (isLeft)
-                maxLv = lv;
-            else
-                minLv = lv;
+            int nextLv = lv;
+            bool newResult = false;
 
-            int nextLv = ((isLeft ? minLv : maxLv) + lv) / 2;
-            bool newResult = Simulate(nextLv);
+            // 이분탐색 시도
+            do
+            {
+                newResult = Simulate(nextLv);
 
-            Console.WriteLine($"[{minLv}, {maxLv}] {lv}, {isLeft} => {nextLv}, {newResult}");
-            
-            Result = newResult ? nextLv : Result;
+                if (newResult)
+                    maxLv = nextLv - 1;
+                else
+                    minLv = nextLv + 1;
 
-            if (maxLv - minLv > 1)
-                Search(nextLv, newResult);
+                nextLv = (maxLv + minLv) / 2;
+                // Console.WriteLine($"[{minLv}, {maxLv}] => {nextLv}, {newResult}");
+            }
+            while (maxLv >= minLv);
+
+            Result = nextLv + 1;
         }
 
     }
