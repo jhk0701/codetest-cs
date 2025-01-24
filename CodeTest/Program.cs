@@ -10,18 +10,16 @@ namespace Test
     {
         static void Main(string[] args) 
         {
-            // 				["next"]
+            // [1, 5, 3],	[2, 4, 7],	30
+            // [1, 4, 4, 2],	[6, 3, 8, 2],	59
+            // [1, 328, 467, 209, 54], [2, 7, 1, 4, 3], 1723
+            // [1, 99999, 100000, 99995], [9999, 9001, 9999, 9001], 3456789012
+            int[] diffs = { 1, 5, 3 };
+            int[] times = { 2, 4, 7 };
+            long limit = 30;
 
-            string video_len = "07:22";     //"10:55";     // "34:33";
-            string pos = "04:05";           // "00:05";           // "13:00";
-            string op_start = "00:15";      // "00:15";      // "00:55";
-            string op_end = "04:07";        // "06:55";        // "02:55";
-            string[] commands = {"next"}; // { "prev", "next", "next" }; // { "next", "prev"};
-
-            var player = new VideoPlayer();
-            string sec = player.Process(video_len, pos, op_start, op_end, commands);
-            Console.WriteLine(sec);
-
+            PuzzleGameChallenge sol = new PuzzleGameChallenge(ref diffs, ref times, limit);
+            Console.WriteLine(sol.Result);
         }
 
 
@@ -41,9 +39,6 @@ namespace Test
         public void Orderby()
         {
             int[] arr = [1, 3, 2, 5, 4];
-            //arr = arr.Order().ToArray(); // 1 2 3 4 5
-            // arr = arr.OrderBy(x => x % 2 == 1).ToArray(); // 2 4 1 3 5
-
             int b = 9;
             int[] arr2 = arr.Where(n => { b -= n; return b > 0; }).ToArray();
             Console.WriteLine(arr2.Length);
