@@ -49,9 +49,11 @@ namespace Test
                 Collision += col.Count;
 
                 // 이동
-                foreach (int key in robotProc.Keys)
+                var keys = robotProc.Keys.ToArray();
+                for (int i = 0; i < keys.Length; i++) // foreach (int key in robotProc.Keys)
                 {
                     // 최종 지점 도착
+                    int key = keys[i];
                     if (robotProc[key] == routes.GetLength(1) - 1)
                     {
                         // 제거 처리
