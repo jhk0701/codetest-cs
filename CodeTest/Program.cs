@@ -10,16 +10,17 @@ namespace Test
     {
         static void Main(string[] args) 
         {
-            // [1, 5, 3],	[2, 4, 7],	30
-            // [1, 4, 4, 2],	[6, 3, 8, 2],	59
-            // [1, 328, 467, 209, 54], [2, 7, 1, 4, 3], 1723
-            // [1, 99999, 100000, 99995], [9999, 9001, 9999, 9001], 3456789012
-            int[] diffs = { 1, 5, 3 };
-            int[] times = { 2, 4, 7 };
-            long limit = 30;
+            /*
+                [[3, 2], [6, 4], [4, 7], [1, 4]]	          [[4, 2], [1, 3], [2, 4]]	          1
+                [[3, 2], [6, 4], [4, 7], [1, 4]]	          [[4, 2], [1, 3], [4, 2], [4, 3]]	  9
+                [[2, 2], [2, 3], [2, 7], [6, 6], [5, 2]]	  [[2, 3, 4, 5], [1, 3, 4, 5]]	      0
+            */
 
-            PuzzleGameChallenge sol = new PuzzleGameChallenge(ref diffs, ref times, limit);
-            Console.WriteLine(sol.Result);
+            int[,] points = {{2, 2}, {2, 3}, {2, 7}, {6, 6}, {5, 2}};//{ {3,2}, {6,4}, {4,7}, {1, 4} };    // { { 3, 2 }, { 6, 4 }, { 4, 7 }, { 1, 4 } };
+            int[,] routes = {{2, 3, 4, 5}, {1, 3, 4, 5}};   // { { 4, 2 }, { 1, 3 }, { 2, 4 } };
+
+            var sol = new RiskOfCollision(ref points, ref routes);
+            Console.WriteLine(sol.Collision);
         }
 
 
@@ -192,6 +193,4 @@ namespace Test
             }
         }
     }
-
-
 }
