@@ -10,15 +10,14 @@ namespace Test
     {
         static void Main(string[] args) 
         {
-            /*
-                [1, 2, 3, 4, 5, 6]	            4	      [4, 5, 3, 6, 2, 1]
-                [10000,20,36,47,40,6,10,7000]	  30	    [36, 40, 20, 47, 10, 6, 7000, 10000]
-            */
+            // ["sun", "bed", "car"]	1	["car", "bed", "sun"]
+            // ["abce", "abcd", "cdx"]	2
+            string[] strings = { "abce", "abcd", "cdx" };
+            int n = 1;
 
-            int[] numlist = { 1, 2, 3, 4, 5, 6 };
-            int n = 4;
-
-            int[] answer = new IrregularSorting().Solution(ref numlist, n);
+            strings = strings.OrderBy(s => s[n]).ThenBy(s=>s).ToArray();
+            
+            Console.WriteLine(string.Join(", ", strings));
         }
     }
 }
