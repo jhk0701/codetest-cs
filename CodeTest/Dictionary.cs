@@ -21,13 +21,12 @@
             string prev = chars;
             for (int i = 0; i < init.Length; i++)
             {
+                if (isComplete) return;
+
                 cnt++;
                 chars += init[i];
-                if (!isComplete)
-                {
-                    Search(ref cnt, chars, target, idx + 1);
-                    chars = prev;
-                }
+                Search(ref cnt, chars, target, idx + 1);
+                chars = prev;
             }
         }
     }
