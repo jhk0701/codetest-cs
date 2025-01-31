@@ -10,8 +10,12 @@ namespace Test
     {
         static void Main(string[] args) 
         {
-            int[] answers = { 1, 3, 2, 4, 2 };
+            string word = "AAAE";
+            int answer = 0;
 
+            // Search(ref answer, "A", word, 1);
+            DictionaryAEIOU sol = new DictionaryAEIOU();
+            sol.Search(ref answer, "", word, 0);
         }
     }
 }
