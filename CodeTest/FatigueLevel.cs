@@ -16,10 +16,11 @@
             {
                 if(k >= dungeons[i, 0] && !visited[i])
                 {
-                    bool[] dirty = (bool[])visited.Clone();
-                    dirty[i] = true;
+                    visited[i] = true;
 
-                    DFS(k - dungeons[i, 1], cnt + 1, dirty, ref dungeons);
+                    DFS(k - dungeons[i, 1], cnt + 1, visited, ref dungeons);
+
+                    visited[i] = false;
                 }
                 else
                     Answer = Math.Max(Answer, cnt);
