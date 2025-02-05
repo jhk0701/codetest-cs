@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,14 +10,13 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            int k = 80;
-            int[,] dungeons = { {80, 20}, { 50, 40 }, {30, 10} };
-            int answer = 0;
+            string[,] tickets = { { "ICN", "AAA" }, { "DDD", "ICN" }, { "ICN", "DDD" } };
+            // {{"ICN", "AAA"}, {"DDD", "ICN"}, {"ICN", "DDD"}}
+            // {{ "ICN", "JFK"}, {"HND", "IAD"}, {"JFK", "HND"}};
+            // {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"}, {"ATL","SFO"}}
 
-            FatigueLevel sol = new FatigueLevel(k, ref dungeons);
-            answer = sol.Answer;
-
-            Console.WriteLine(answer);
+            TravelPath sol = new TravelPath(ref tickets);
+            Console.WriteLine(string.Join(",", sol.Answer));
         }
     }
 
