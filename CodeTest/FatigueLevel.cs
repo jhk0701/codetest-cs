@@ -16,8 +16,7 @@
             {
                 if(k >= dungeons[i, 0] && !visited[i])
                 {
-                    bool[] dirty = new bool[visited.Length];
-                    Array.Copy(visited, dirty, visited.Length);
+                    bool[] dirty = (bool[])visited.Clone();
                     dirty[i] = true;
 
                     DFS(k - dungeons[i, 1], cnt + 1, dirty, ref dungeons);
