@@ -10,13 +10,6 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            string[,] tickets = { { "ICN", "AAA" }, { "DDD", "ICN" }, { "ICN", "DDD" } };
-            // {{"ICN", "AAA"}, {"DDD", "ICN"}, {"ICN", "DDD"}}
-            // {{ "ICN", "JFK"}, {"HND", "IAD"}, {"JFK", "HND"}};
-            // {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"}, {"ATL","SFO"}}
-
-            TravelPath sol = new TravelPath(ref tickets);
-            Console.WriteLine(string.Join(",", sol.Answer));
         }
     }
 
