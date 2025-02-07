@@ -8,15 +8,16 @@ namespace Test
 {
     internal partial class Program
     {
+        public class SortedQ : IComparer<KeyValuePair<int, int>>
+        {
+            public int Compare(KeyValuePair<int, int> x, KeyValuePair<int, int> y)
+            {
+                return x.Value.CompareTo(y.Value);
+            }
+        }
+
         static void Main(string[] args)
         {
-            string t = "A 6";
-            string[] sp = t.Split(' ');
-
-            for (int i = 0; i < sp.Length; i++)
-                Console.WriteLine(sp[i]);
-
-
         }
     }
 }
