@@ -10,6 +10,12 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            int[,] arr1 = { { 1,2 }, { 2,3 } };
+            int[,] answer = new int[arr1.GetLength(0), arr1.GetLength(1)];
+            Console.WriteLine(answer.GetLength(0));
+            Console.WriteLine(answer.GetLength(1));
+
+            Console.WriteLine(answer[0,0]);
         }
     }
 }
