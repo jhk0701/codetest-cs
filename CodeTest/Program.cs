@@ -12,14 +12,8 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Stack<int> st = new Stack<int>();
-            st.Push(1);
-            st.Push(2);
-            st.Push(3);
-
-            int[] arr = st.Reverse().ToArray();
-
-            Console.WriteLine(string.Join("", arr));
+            JoyStick joystick = new JoyStick();
+            Console.WriteLine(joystick.Sol("JAN")); // "JEROEN"
         }
     }
 }
