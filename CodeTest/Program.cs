@@ -3,8 +3,6 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using CodeTest;
-using System.Drawing;
-using System.Threading;
 
 namespace Test
 {
@@ -12,8 +10,12 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            JoyStick joystick = new JoyStick();
-            Console.WriteLine(joystick.Sol("JAN")); // "JEROEN"
+            SplitElectricNetwork split = new SplitElectricNetwork();
+
+            int n = 7;
+            int[,] wires = { {1,2},{2,7},{3,7},{3,4},{4,5},{6,7} };
+
+            Console.WriteLine(split.Sol(n, wires));
         }
     }
 }
