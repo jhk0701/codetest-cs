@@ -25,20 +25,21 @@
             Result = new int[info.Length];
 
             int[] arr = new int[info.Length];
-            Search(0, n, ref arr, ref info, 0);
+            Search(0, n, 0, ref arr, ref info);
 
             return isWin ? Result : new int[]{-1};
         }
 
-        void Search(int idx, int cnt, ref int[] arr, ref int[] apeach, int score)
+        void Search(int idx, int cnt, int prevScore, ref int[] arr, ref int[] apeach)
         {
             SearchCnt++;
-            Console.WriteLine($"{SearchCnt} : {string.Join(",", arr)}");
+            // Console.WriteLine($"{SearchCnt} : {string.Join(",", arr)}");
 
             if (idx >= cnt)
             {
                 if (IsWin(ref arr, ref apeach, out int newDiff))
                 {
+                    Console.WriteLine($"new diff : {newDiff}, {string.Join(",", arr)}");
                     if (newDiff > diff || (newDiff == diff && Compare(ref arr, ref Result))) 
                     {
                         isWin = true;
@@ -50,17 +51,38 @@
                 return;
             }
 
-            for(int i = 0; i < arr.Length; i++) 
+            // 점수별 탐색
+            for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] += 1;
+                // i 점수
+                // nIdx 인덱스
+                int nIdx = arr.Length - 1 - i;
 
-                int newScore = CalcScore(ref arr, ref apeach);
-                Search(idx + 1, cnt, ref arr, ref apeach, newScore);
+                // 제약 조건 추가
+                if (idx > 0 && i < prevScore)
+                    continue;
+                if (apeach[nIdx] > 0 && arr[nIdx] > apeach[nIdx])
+                    continue;
 
-                arr[i] -= 1;
+                arr[nIdx] += 1;
+
+                Search(idx + 1, cnt, i, ref arr, ref apeach);
+
+                arr[nIdx] -= 1;
             }
 
-            Console.WriteLine("Break");
+            
+            //for(int i = 0; i < arr.Length; i++) 
+            //{
+            //    if (apeach[i] >= 1 && arr[i] > apeach[i]) 
+            //        continue;
+
+            //    arr[i] += 1;
+
+            //    Search(idx + 1, cnt, ref arr, ref apeach);
+
+            //    arr[i] -= 1;
+            //}
         }
 
         bool IsWin(ref int[] ryan, ref int[] apeach, out int diff) 
@@ -105,13 +127,16 @@
             {
                 int idx = arr1.Length - 1 - i;
 
+                if (arr1[idx] == 0 && arr2[idx] == 0)
+                    continue;
+
                 if (arr1[idx] > arr2[idx])
                     return true;
-                else if (arr1[idx] == arr2[idx])
-                    continue;
+                else if (arr1[idx] < arr2[idx])
+                    return false;
             }
 
-            return false;
+            return true;
         }
     }
 }
