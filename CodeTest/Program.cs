@@ -10,10 +10,14 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            int[] el = { 7, 9, 1, 1, 4 };
+            int[] sequence = { 6, -7, 16, 3, -4 };
+                //{ 2, 3, -6, 1, 3, -1, 2, 4 };
+            // { -1, 1 }; //{ 1, -1, 1, -1, 1, 1,1,1,1 }; // { 2, 3, -6, 1, 3, -1, 2, 4 };
 
-            CountOfContiniousPartialSum sol = new CountOfContiniousPartialSum();
-            Console.WriteLine(sol.Sol(el));
+            ContiniousPulse sol = new ContiniousPulse();
+            Console.WriteLine(sol.Sol(sequence));
         }
+
+
     }
 }
